@@ -1,0 +1,7 @@
+<h2> Hey <%= current_user.first_name %>, welcome home !</h2>
+  <p> Here is your current speech </p>
+  <% @speeches.each do |speech| %>
+  <%= speech.url %> <%= speech.length_max %> <%= speech.description %> <%= speech.user.first_name %>
+  <%= link_to "See", speech_path(speech), class:"btn btn-primary"  %>
+  <% end %>
+  <%= link_to "Create a new speech", new_speech_path, class:"btn btn-success"  %>
