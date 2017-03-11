@@ -2,3 +2,5 @@
 <%= @speech.description %>
 <%= @speech.length_max %>
 <%= @speech.user.first_name %>
+
+<%= link_to "Delete my speech", speech_path(@speech), method: :delete, data: { confirm: "Are you sure you want to delete your speech ?" }   %>

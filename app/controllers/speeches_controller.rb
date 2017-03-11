@@ -22,6 +22,11 @@ class SpeechesController < ApplicationController
     end
   end
 
+  def destroy
+    @speech.delete
+    redirect_to speeches_path
+  end
+
   private
 
   def set_speech
