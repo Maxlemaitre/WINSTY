@@ -2,6 +2,6 @@
 <%= @speech.description %>
 <%= @speech.length_max %>
 <%= @speech.user.first_name %>
-<%= cl_image_tag @speech.user.photo, height: 100, width: 100, radius: :max, crop: :fill, gravity: :face %>
+<%= cl_image_tag @speech.user.photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face %>
 
 <%= link_to "Delete my speech", speech_path(@speech), method: :delete, data: { confirm: "Are you sure you want to delete your speech ?" }   %>
