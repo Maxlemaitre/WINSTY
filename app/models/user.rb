@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   has_many :speeches, dependent: :destroy
   has_many :reviews, dependent: :destroy
   validates :first_name, presence: true
