@@ -2,7 +2,7 @@ class SpeechesController < ApplicationController
     before_action :set_speech, only: [:show, :destroy]
 
   def index
-    @speeches = Speech.all
+    @user_speeches = current_user.speeches
   end
 
   def show

@@ -1,0 +1,27 @@
+.cards {
+  height: 300px;
+  border-radius: 5px;
+  box-shadow: 3px 6px 16px $gray;
+  border: solid 1px $gray;
+  transition: all 0.3s ease;
+  padding: 10px;
+  h3 {
+    color: $brand-color;
+    font-size: 34px;
+    font-weight: bold;
+  }
+  .speecher-avatar {
+    margin-top: 2em;
+  }
+  p {
+    color: $blue;
+  }
+}
+
+.cards:hover {
+  cursor: pointer;
+}
+
+.unstyle-link:hover {
+  text-decoration: none;
+}

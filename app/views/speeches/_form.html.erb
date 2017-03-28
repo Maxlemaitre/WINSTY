@@ -1,6 +1,10 @@
-<%= simple_form_for [@speech] do |f| %>
-  <%= f.input :url %>
-  <%= f.input :description %>
-  <%= f.input :length_max %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <ziggeo ziggeo-limit=180 ziggeo-width=320 ziggeo-height=240 ziggeo-countdown=5 ziggeo-perms=forbidrerecord ></ziggeo>
+
+    <%= simple_form_for [@speech] do |f| %>
+      <%= f.input :description %>
+      <%= f.button :submit %>
+  <% end %>
+  </div>
+</div>

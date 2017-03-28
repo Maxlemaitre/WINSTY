@@ -1,4 +1,19 @@
+.dashboard-content h1, h3 {
+  color: $brand-color;
+  font-weight: bold !important;
+  }
+
+  .dashboard-content .title {
+    margin-top: 40px;
+  }
+
+ .dashboard-content h3 {
+  font-size: 36px;
+  padding-right: 40px;
+
+ }
+
 .purple {
   color: $purple;
-  font-size: 72px;
+  font-size: 62px;
 }

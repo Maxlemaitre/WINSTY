@@ -1,15 +1,32 @@
 <div class="container">
   <div class="row">
-  <h2 class="title"> Hello <%= current_user.first_name %></h2>
-    <ul class='list-inline'>
-      <li><h3> <span class="purple">8</span> speeches </h3></li>
-      <li><h3> <span class="purple">8</span> in progress </h3></li>
-      <li><h3> <span class="purple">11</span> reviews </h3></li>
-    </ul>
-    <% @speeches.each do |speech| %>
-    <%= speech.url %> <%= speech.description %> <%= speech.user.first_name %>
-    <%= link_to "See", speech_path(speech), class:"btn btn-primary"  %>
-    <% end %>
-    <%= link_to "Create a new speech", new_speech_path, class:"btn btn-success"  %>
+    <div class="col-xs-12">
+      <div class="dashboard-content">
+        <h1 class="title"> Hello <%= current_user.first_name %> </h1>
+        <ul class="text-center list-inline">
+          <% if current_user.speeches.count <= 1 %>
+            <li><h3><span class="purple"><%= current_user.speeches.count %></span> speech </h3></li>
+          <% else %>
+            <li><h3><span class="purple"><%= current_user.speeches.count %></span>
+          <% end %>
+          <li><h3><span class="purple">8</span> submitted </h3></li>
+          <li><h3><span class="purple">11</span> reviews </h3></li>
+        </ul>
+      </div>
+        <% @user_speeches.each do |speech| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= link_to speech_path(speech), class:"unstyle-link" do %>
+              <div class="cards">
+                <div class="text-center">
+                  <%= cl_image_tag User.find(speech.user_id).photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face, class: "speecher-avatar" %>
+                  <h3><%= speech.title %></h3>
+                  <p><%= speech.description %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
