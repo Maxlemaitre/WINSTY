@@ -10,6 +10,16 @@
   padding-bottom: 5em;
 }
 
+.top-padded {
+  padding-top: 1em;
+}
+
+// Font color
+
+body {
+  color: $brand-color;
+}
+
 // Backgrounds
 .bg-black {
   background: #4a4a4a;

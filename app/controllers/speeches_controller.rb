@@ -34,6 +34,6 @@ class SpeechesController < ApplicationController
   end
 
   def params_speech
-    params.require(:speech).permit(:description, :length_max, :url)
+    params.require(:speech).permit(:title, :description, :length_max, :url)
   end
 end

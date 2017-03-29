@@ -1,10 +1,17 @@
 <div class="container">
   <div class="row">
-    <ziggeo ziggeo-limit=180 ziggeo-width=320 ziggeo-height=240 ziggeo-countdown=5 ziggeo-perms=forbidrerecord ></ziggeo>
-
-    <%= simple_form_for [@speech] do |f| %>
-      <%= f.input :description %>
-      <%= f.button :submit %>
-  <% end %>
+    <div class="col-xs-12">
+      <h1 class="text-center top-padded">Speech time!</h1>
+      <%= simple_form_for [@speech] do |f| %>
+      <div class="col-xs-12 col-sm-8">
+        <ziggeo ziggeo-limit=180 ziggeo-countdown=5 ziggeo-perms=forbidrerecord ></ziggeo>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :title %>
+        <%= f.input :description %>
+      </div>
+        <%= f.button :submit, "Submit my speech" %>
+      <% end %>
+    </div>
   </div>
 </div>
