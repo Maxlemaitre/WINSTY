@@ -1,0 +1,35 @@
+.hide {
+  display: none;
+}
+
+.form-control {
+  box-shadow: none;
+  border: none;
+  border-bottom:1px solid #ccc;
+}
+
+.btn-radius {
+  padding: 0 3.4rem;
+  border-radius: 20em;
+  line-height: 40px;
+  color: white;
+  font-size: 14px;
+  font-weight: 200;
+  box-shadow: 0 0.1rem 0.4rem 0 rgba(0,0,0,.1);
+  opacity: 0.9;
+}
+
+.btn-blue {
+  background-color: $blue;
+}
+
+.btn-radius:hover {
+  color: white;
+  box-shadow: 0 0 0 0.1rem rgba(0,0,0,.12), 0 0.2rem 0.3rem 0 rgba(0,0,0,.06);
+  opacity: 1.0;
+}
+
+.introduction-form p, ul {
+  font-weight: 200;
+}
+
