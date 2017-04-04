@@ -2,10 +2,15 @@
   display: none;
 }
 
+.control-label {
+  font-weight: 200;
+}
+
 .form-control {
   box-shadow: none;
   border: none;
   border-bottom:1px solid #ccc;
+  color: black;
 }
 
 .btn-radius {
@@ -16,11 +21,21 @@
   font-size: 14px;
   font-weight: 200;
   box-shadow: 0 0.1rem 0.4rem 0 rgba(0,0,0,.1);
-  opacity: 0.9;
+  opacity: 0.8;
+  border: none !important;
 }
 
 .btn-blue {
   background-color: $blue;
+}
+
+.btn-aqua {
+  background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+}
+
+.btn-aqua:hover {
+  background-color: $aqua;
+  border: none;
 }
 
 .btn-radius:hover {
@@ -32,4 +47,9 @@
 .introduction-form p, ul {
   font-weight: 200;
 }
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: lightslategrey;
+  }
 

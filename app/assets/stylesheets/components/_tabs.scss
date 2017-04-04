@@ -1,0 +1,13 @@
+.tabs {
+  display: flex;
+}
+
+.tab {
+   flex: 0 0 33%;
+   text-align: center;
+}
+
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
