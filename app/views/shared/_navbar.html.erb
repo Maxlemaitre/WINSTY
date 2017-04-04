@@ -10,6 +10,8 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+    <!-- Button (call-to-action) -->
+    <%= link_to t(".top_call_to_action", default: "Let's speech"), new_speech_path , class: "navbar-wagon-item navbar-wagon-button btn" %>
 
       <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -41,9 +43,6 @@
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
-
-    <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Sign in"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->

@@ -2,7 +2,7 @@ class SpeechesController < ApplicationController
     before_action :set_speech, only: [:show, :destroy]
 
   def index
-    @speeches = Speech.all
+    @user_speeches = current_user.speeches
   end
 
   def show
@@ -34,6 +34,6 @@ class SpeechesController < ApplicationController
   end
 
   def params_speech
-    params.require(:speech).permit(:description, :length_max, :url)
+    params.require(:speech).permit(:title, :description, :length_max, :url)
   end
 end

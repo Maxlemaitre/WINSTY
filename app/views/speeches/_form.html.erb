@@ -1,6 +1,49 @@
-<%= simple_form_for [@speech] do |f| %>
-  <%= f.input :url %>
-  <%= f.input :description %>
-  <%= f.input :length_max %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="introduction-form">
+        <h1 class="text-center top-padded">How does it work ?</h1>
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+          <p>Winsty has been thought to let you train yourselves to speech in front of your computer any ideas in real-life conditions. In a way to make this experience the most profitable possible for you, few conditions has been settled :</p>
+          <ul class="list-unstyled">
+            <li>1. One-shot record only</li>
+            <li>2. 180 seconds to convince, nothing more</li>
+            <li>3. Access to your video speech only when your buddies will have reviewed it</li>
+          </ul>
+          <p>Are you ready ?</p>
+          <p>Click on the button bellow to start to speech, the record process will start automatically in 5 seconds. Show us what you got !</p>
+        <div class="text-center">
+        <div class="btn btn-radius btn-blue start-speech">Ready to speech !</div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="first-form hide">
+        <h1 class="text-center top-padded">Speech time!</h1>
+        <%= simple_form_for [@speech] do |f| %>
+          <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+            <ziggeo ziggeo-limit=180 ziggeo-countdown=5 ziggeo-perms=forbidrerecord ziggeo-responsive=true ziggeo-height=420 ziggeo-width=590 ziggeo-hide_rerecord_on_snapshots=true  ></ziggeo>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="second-form hide">
+      <div class="row top-padded" >
+        <div class="col-xs-12">
+          <h1 class="text-center top-padded">Almost done ...</h1>
+          <div class="col-xs-12 col-sm-offset-4 col-sm-4">
+            <%= f.input :title %>
+            <%= f.input :description, as: :text, placeholder: '#startupidea #fintech' %>
+            <div class="text-center">
+              <%= f.button :submit, "Submit my speech", class:"btn-radius btn-aqua" %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
