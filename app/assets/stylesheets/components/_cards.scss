@@ -1,17 +1,18 @@
 .cards {
   height: 300px;
   border-radius: 5px;
-  box-shadow: 3px 6px 16px $gray;
-  border: solid 1px $gray;
-  transition: all 0.3s ease;
+  background-color: white;
+  box-shadow: 3px 3px 4px rgba(239,239,239,0.4);
   padding: 10px;
+  margin-top: 10px;
   h3 {
     color: $brand-color;
     font-size: 34px;
     font-weight: bold;
   }
-  .speecher-avatar {
-    margin-top: 2em;
+  .image-cards {
+    padding-top: 2em;
+    max-width: 30px;
   }
   p {
     color: $blue;

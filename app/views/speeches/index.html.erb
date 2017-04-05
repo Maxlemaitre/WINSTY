@@ -3,22 +3,25 @@
     <div class="col-xs-12">
       <div class="dashboard-content">
         <h1 class="title"> Hello <%= current_user.first_name %> </h1>
-        <div class="tabs">
-          <% if current_user.speeches.count <= 1 %>
-            <h4><span class="tab active"><%= current_user.speeches.count %></span> speech </h4>
-          <% else %>
-            <h4><span class="tab"><%= current_user.speeches.count %></span> speeches </h4>
+        <div class="tabs text-center">
+          <%= link_to "#", class:"tab active", id:"speeches" do %>
+            <p><%=current_user.speeches.count%> <%= current_user.speeches.count <= 1 ? "speech" : "speeches" %></p>
           <% end %>
-          <h4><span class="tab">8</span> submitted </h4>
-          <h4><span class="tab">11</span> reviews </h4>
+          <%= link_to "#", class:"tab", id:"submitted" do %>
+            <p>8 submitted</p>
+          <% end %>
+          <%= link_to "#", class:"tab", id:"reviews"  do %>
+            <p>11 reviews</p>
+          <% end %>
         </div>
       </div>
+      <div class="tab-content" id="speeches">
         <% @user_speeches.each do |speech| %>
           <div class="col-xs-12 col-sm-4">
             <%= link_to speech_path(speech), class:"unstyle-link" do %>
               <div class="cards">
                 <div class="text-center">
-                  <%= cl_image_tag User.find(speech.user_id).photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face, class: "speecher-avatar" %>
+                  <%= image_tag "mic.png", class: "image-cards" %>
                   <h3><%= speech.title %></h3>
                   <p><%= speech.description %></p>
                 </div>
@@ -26,6 +29,12 @@
             <% end %>
           </div>
         <% end %>
+      </div>
+      <div class="tab-content" id="submitted">
+      <p>submitted</p>
+      </div>
+      <div class="tab-content" id="reviews">
+        <p>reviews</p>
       </div>
     </div>
   </div>
