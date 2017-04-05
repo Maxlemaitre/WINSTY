@@ -4,17 +4,18 @@
       <div class="dashboard-content">
         <h1 class="title"> Hello <%= current_user.first_name %> </h1>
         <div class="tabs text-center">
-          <%= link_to "#", class:"tab active" do %>
+          <%= link_to "#", class:"tab active", id:"speeches" do %>
             <p><%=current_user.speeches.count%> <%= current_user.speeches.count <= 1 ? "speech" : "speeches" %></p>
           <% end %>
-          <%= link_to "#", class:"tab" do %>
+          <%= link_to "#", class:"tab", id:"submitted" do %>
             <p>8 submitted</p>
           <% end %>
-          <%= link_to "#", class:"tab" do %>
+          <%= link_to "#", class:"tab", id:"reviews"  do %>
             <p>11 reviews</p>
           <% end %>
         </div>
       </div>
+      <div class="tab-content" id="speeches">
         <% @user_speeches.each do |speech| %>
           <div class="col-xs-12 col-sm-4">
             <%= link_to speech_path(speech), class:"unstyle-link" do %>
@@ -28,6 +29,12 @@
             <% end %>
           </div>
         <% end %>
+      </div>
+      <div class="tab-content" id="submitted">
+      <p>submitted</p>
+      </div>
+      <div class="tab-content" id="reviews">
+        <p>reviews</p>
       </div>
     </div>
   </div>
