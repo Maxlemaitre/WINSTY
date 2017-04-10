@@ -1,0 +1,20 @@
+.fixedbtn {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: $brand-color;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  box-shadow: 5px 4px 8px rgba(75, 153, 255, 0.3);
+  text-decoration: none !important;
+}
+
+.plus {
+  position: absolute;
+  max-height: 15px;
+  max-width: 15px;
+  top: 17px;
+  left: 17px;
+
+}
