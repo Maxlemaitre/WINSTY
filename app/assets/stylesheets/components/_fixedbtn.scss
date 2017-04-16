@@ -6,8 +6,9 @@
   position: fixed;
   bottom: 50px;
   right: 50px;
-  box-shadow: 5px 4px 8px rgba(75, 153, 255, 0.3);
+  box-shadow: 0 0 5px rgba(224, 225, 229, 1), 0 5px 5px rgba(224, 225, 229, 1), 0 0 7px rgba(224, 225, 229, 1), 0 7px 7px rgba(224, 225, 229, 1);
   text-decoration: none !important;
+  transition: all .2s ease-in-out;
 }
 
 .plus {
@@ -16,5 +17,9 @@
   max-width: 15px;
   top: 17px;
   left: 17px;
+}
 
+.fixedbtn:hover {
+  box-shadow: 0 0 10px rgba(224, 225, 229, 1), 0 10px 10px rgba(224, 225, 229, 1), 0 0 14px rgba(224, 225, 229, 1), 0 14px 14px rgba(224, 225, 229, 1);
+  transform: scale(1.05)
 }
