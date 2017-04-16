@@ -3,6 +3,7 @@ class SpeechesController < ApplicationController
 
   def index
     @user_speeches = current_user.speeches
+    @user_speeches_submitted = current_user.speeches.where(title: "Winsty")
   end
 
   def show

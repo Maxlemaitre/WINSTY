@@ -4,4 +4,16 @@
 <%= @speech.user.first_name %>
 <%= cl_image_tag @speech.user.photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face %>
 
+<%= simple_form_for [@speech, Review.new] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "add a review", class: "btn btn-primary" %>
+<% end %>
+
 <%= link_to "Delete my speech", speech_path(@speech), method: :delete, data: { confirm: "Are you sure you want to delete your speech ?" }   %>
+<% @speech.reviews.each do |review| %>
+<ul class="list-inline list-unstyled">
+  <li><%= cl_image_tag review.user.photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face %></li>
+  <li><%= review.content %></li>
+  <li><%= review.user.first_name %></li>
+</ul>
+<% end %>

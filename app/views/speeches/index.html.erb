@@ -31,7 +31,17 @@
         <% end %>
       </div>
       <div class="tab-content" id="submitted">
-      <p>submitted</p>
+        <% @user_speeches_submitted.each do |speech| %>
+          <div class="col-xs-12 col-sm-4">
+            <div class="cards">
+              <div class="text-center">
+                <%= image_tag "mic.png", class: "image-cards" %>
+                <h3><%= speech.title %></h3>
+                <p><%= speech.description %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
       <div class="tab-content" id="reviews">
         <p>reviews</p>
