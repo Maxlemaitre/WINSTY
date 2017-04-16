@@ -5,18 +5,18 @@
         <h1 class="title"> Hello <%= current_user.first_name %> </h1>
         <div class="tabs text-center">
           <%= link_to "#", class:"tab active", id:"speeches" do %>
-            <p><%=current_user.speeches.count%> <%= current_user.speeches.count <= 1 ? "speech" : "speeches" %></p>
+            <p><%=@user_speech_done.count%> <%= @user_speech_done.count <= 1 ? "speech" : "speeches" %></p>
           <% end %>
           <%= link_to "#", class:"tab", id:"submitted" do %>
-            <p>8 submitted</p>
+            <p><%= @user_speech_submitted.count.to_s + " submitted" %> </p>
           <% end %>
           <%= link_to "#", class:"tab", id:"reviews"  do %>
-            <p>11 reviews</p>
+            <p><%= @reviews_received.count %> <%= @reviews_received.count <= 1 ? "review" : "reviews" %></p>
           <% end %>
         </div>
       </div>
       <div class="tab-content" id="speeches">
-        <% @user_speeches.each do |speech| %>
+        <% @user_speech_done.each do |speech| %>
           <div class="col-xs-12 col-sm-4">
             <%= link_to speech_path(speech), class:"unstyle-link" do %>
               <div class="cards">
@@ -31,7 +31,7 @@
         <% end %>
       </div>
       <div class="tab-content" id="submitted">
-        <% @user_speeches_submitted.each do |speech| %>
+        <% @user_speech_submitted .each do |speech| %>
           <div class="col-xs-12 col-sm-4">
             <div class="cards">
               <div class="text-center">
@@ -44,7 +44,15 @@
         <% end %>
       </div>
       <div class="tab-content" id="reviews">
-        <p>reviews</p>
+        <% @reviews_received.each do |review| %>
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+            <ul class="list-group list-unstyled list-inline">
+              <li> <%= cl_image_tag review.user.photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face %></li>
+              <li><%= review.content %></li>
+              <li><%= review.speech.title %></li>
+            </ul>
+          </div>
+        <% end %>
       </div>
       <%= link_to new_speech_path , class:"fixedbtn" do  %>
         <%= image_tag "plus-symbol.png", class:"plus" %>
