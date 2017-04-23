@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="dashboard-content">
-        <h1 class="title"> Hello <%= current_user.first_name %> </h1>
+<!--         <h1 class="title"> Hello <%#= current_user.first_name %> </h1> -->
         <div class="tabs text-center">
           <%= link_to "#", class:"tab active", id:"speeches" do %>
             <p><%=@user_speech_done.count%> <%= @user_speech_done.count <= 1 ? "speech" : "speeches" %></p>
@@ -46,11 +46,20 @@
       <div class="tab-content" id="reviews">
         <% @reviews_received.each do |review| %>
           <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <ul class="list-group list-unstyled list-inline">
-              <li> <%= cl_image_tag review.user.photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face %></li>
-              <li><%= review.content %></li>
-              <li><%= review.speech.title %></li>
-            </ul>
+            <div class="review">
+              <div class="col-xs-3 col-sm-2">
+                <div class="review-user">
+                  <%= cl_image_tag review.user.photo, height: 40, width: 40, radius: :max, crop: :fill, gravity: :face %>
+                  <p><%= review.user.first_name %></p>
+                  <p><%= review.created_at %></p>
+                </div>
+              </div>
+              <div class="col-xs-9 col-sm-10">
+                <div class="review-content">
+                  <%= review.content %>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>
