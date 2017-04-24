@@ -2,5 +2,15 @@
   padding: 20px;
   margin: 5px;
   border-bottom: 1px solid $gray;
-  min-height: 100px
+  min-height: 150px;
+}
+
+.review-user {
+  img {
+  vertical-align: inherit;
+  }
+  p {
+    margin: 0px;
+    line-height: 1.1;
+  }
 }
