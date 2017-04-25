@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="dashboard-content">
-        <h1 class="title"> Hello <%= current_user.first_name %> </h1>
+<!--         <h1 class="title"> Hello <%#= current_user.first_name %> </h1> -->
         <div class="tabs text-center">
           <%= link_to "#", class:"tab active", id:"speeches" do %>
             <p><%=@user_speech_done.count%> <%= @user_speech_done.count <= 1 ? "speech" : "speeches" %></p>
@@ -45,12 +45,19 @@
       </div>
       <div class="tab-content" id="reviews">
         <% @reviews_received.each do |review| %>
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-            <ul class="list-group list-unstyled list-inline">
-              <li> <%= cl_image_tag review.user.photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face %></li>
-              <li><%= review.content %></li>
-              <li><%= review.speech.title %></li>
-            </ul>
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="review">
+              <div class="review-user">
+                <%= cl_image_tag review.user.photo, height: 40, width: 40, radius: :max, crop: :fill, gravity: :face %>
+                <div class="reviewer-info">
+                  <p><strong><%= review.user.first_name %></strong></p>
+                  <p><%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i %> <%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i > 1 ? " days ago" : " day ago" %> on <%= link_to review.speech.title, speech_path(review.speech), class:"speech-name" %> </p>
+                </div>
+              </div>
+              <div class="review-content">
+                <%= review.content %>
+              </div>
+          </div>
           </div>
         <% end %>
       </div>
