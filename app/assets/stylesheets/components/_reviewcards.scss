@@ -1,16 +1,29 @@
 .review {
   padding: 20px;
   margin: 5px;
-  border-bottom: 1px solid $gray;
   min-height: 150px;
+  img {
+    vertical-align: sub;
+  }
 }
 
-.review-user {
-  img {
-  vertical-align: inherit;
-  }
+.reviewer-info {
+  display: inline-block;
+  line-height: 1.2;
+  padding-left: 15px;
   p {
     margin: 0px;
-    line-height: 1.1;
   }
+  .speech-name {
+    color: #4F9BFF;
+    font-weight: 400;
+  }
+  .speech-name:hover {
+    text-decoration: none;
+  }
+}
+
+.review-content {
+  border-bottom: 1px solid $gray;
+  padding: 25px 12px;
 }
