@@ -51,7 +51,7 @@
                 <%= cl_image_tag review.user.photo, height: 40, width: 40, radius: :max, crop: :fill, gravity: :face %>
                 <div class="reviewer-info">
                   <p><strong><%= review.user.first_name %></strong></p>
-                  <p><%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i %> <%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i > 1 ? " days ago" : " day ago" %> on <%= link_to review.speech.title, speech_path(review.speech), class:"speech-name" %> </p>
+                  <p><%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e").gsub(/\s+/, ''))).to_i %> <%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e").gsub(/\s+/, ''))).to_i > 1 ? " days ago" : " day ago" %> on <%= link_to review.speech.title, speech_path(review.speech), class:"speech-name" %> </p>
                 </div>
               </div>
               <div class="review-content">

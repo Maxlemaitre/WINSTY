@@ -3,12 +3,12 @@ class SpeechesController < ApplicationController
 
   def index
     @user_speeches = current_user.speeches
-    @user_speech_submitted = []
+    @user_speech_submitted = current_user.speeches.where(reviewed: false)
+    @user_speech_done = current_user.speeches.where(reviewed: true)
     @reviews_received = []
-    @user_speech_done = []
     @user_speeches.each do |speech|
-      @user_speech_submitted << speech if speech.reviews.count <= 2
-      @user_speech_done << speech if speech.reviews.count >= 3
+      # @user_speech_submitted << speech if speech.reviews.count <= 2
+      # @user_speech_done << speech if speech.reviews.count >= 3
       @reviews_received << speech.reviews
     end
     @reviews_received = @reviews_received[1]
