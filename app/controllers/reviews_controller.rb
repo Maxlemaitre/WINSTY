@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.create(user: current_user, speech: @speech, content: params[:review][:content])
+    @review.filter
     redirect_to speech_path(@speech)
   end
 
