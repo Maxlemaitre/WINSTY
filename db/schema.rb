@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170328125245) do
+ActiveRecord::Schema.define(version: 20170505113755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(version: 20170328125245) do
     t.integer  "length_max"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "title"
+    t.boolean  "reviewed",    default: false
     t.index ["user_id"], name: "index_speeches_on_user_id", using: :btree
   end
 
