@@ -2,10 +2,9 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="dashboard-content">
-<!--         <h1 class="title"> Hello <%#= current_user.first_name %> </h1> -->
         <div class="tabs text-center">
           <%= link_to "#speeches", class:"tab active", id:"speeches" do %>
-            <p><%=@user_speech_done.count%> <%= @user_speech_done.count <= 1 ? "speech" : "speeches" %></p>
+            <p><%= @user_speech_done.count %> <%= @user_speech_done.count <= 1 ? "speech" : "speeches" %></p>
           <% end %>
           <%= link_to "#submitted", class:"tab", id:"submitted" do %>
             <p><%= @user_speech_submitted.count.to_s + " submitted" %> </p>

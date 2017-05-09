@@ -6,12 +6,8 @@ class SpeechesController < ApplicationController
     @user_speech_submitted = current_user.speeches.where(reviewed: false)
     @user_speech_done = current_user.speeches.where(reviewed: true)
     @reviews_received = []
-    @user_speeches.each do |speech|
-      # @user_speech_submitted << speech if speech.reviews.count <= 2
-      # @user_speech_done << speech if speech.reviews.count >= 3
-      @reviews_received << speech.reviews
-    end
-    @reviews_received = @reviews_received[1]
+    @user_speeches.each {|speech| @reviews_received << speech.reviews}
+    @reviews_received.empty? ? @reviews_received = [] : @reviews_received = @reviews_received[1]
   end
 
   def show
@@ -24,11 +20,18 @@ class SpeechesController < ApplicationController
   def create
     @speech = Speech.new(params_speech)
     @speech.user = current_user
-    if @speech.save
-      redirect_to speech_path(@speech)
+    if @speech.save && Speech.where(reviewed: false).where( "user_id != #{current_user.id}").order(:created_at).limit(3).count != 0
+      redirect_to reviews_path
+    elsif @speech.save
+      redirect_to speeches_path
     else
       render 'new'
     end
+  end
+
+  def update
+    @speech = Speech.find(params[:id])
+    params[:reviewed].nil? ? @speech.update(params_speech) : @speech.update(reviewed: params[:reviewed])
   end
 
   def destroy
@@ -43,6 +46,6 @@ class SpeechesController < ApplicationController
   end
 
   def params_speech
-    params.require(:speech).permit(:title, :description, :length_max, :url)
+    params.require(:speech).permit(:title, :description, :length_max, :url, :reviewed)
   end
 end

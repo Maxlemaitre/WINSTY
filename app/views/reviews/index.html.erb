@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="dashboard-content">
+        <div class="text-center">
+        <h3> Contribution is the key !</h3>
+        <p>Help the community by reviewing those 3 following speeches</p>
+        </div>
+      </div>
+      <div class="top-padded">
+        <% @reviews.each do |speech| %>
+          <div class="col-xs-12 col-sm-4">
+            <%= link_to speech_path(speech), class:"unstyle-link" do %>
+              <div class="cards">
+                <div class="text-center">
+                  <%= cl_image_tag speech.user.photo, height: 50, width: 50, radius: :max, crop: :fill, gravity: :face, class:"avatar-speaker" %>
+                  <h3><%= speech.title %></h3>
+                  <p><%= speech.description %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

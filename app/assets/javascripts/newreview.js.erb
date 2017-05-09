@@ -1,0 +1,10 @@
+$(document).ready(function() {
+  $("#new-review").on("click", function(e) {
+    var speech_id = window.location.pathname.replace(/\D/g,'');
+    $.ajax({
+      type: "PUT",
+      url: "/speeches/" + speech_id,
+      data: {reviewed: true}
+    });
+  });
+})
