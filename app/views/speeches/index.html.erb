@@ -11,23 +11,29 @@
             <p><%= @user_speech_submitted.count.to_s + " submitted" %> </p>
           <% end %>
           <%= link_to "#", class:"tab", id:"reviews"  do %>
-            <p><%= @reviews_received.count %> <%= @reviews_received.count <= 1 ? "review" : "reviews" %></p>
+            <% if @reviews_received.nil? %>
+              <p>0 review</p>
+            <% else %>
+              <p><%= @reviews_received.count %> <%= @reviews_received.count <= 1 ? "review" : "reviews" %></p>
+            <% end %>
           <% end %>
         </div>
       </div>
       <div class="tab-content" id="speeches">
-        <% @user_speech_done.each do |speech| %>
-          <div class="col-xs-12 col-sm-4">
-            <%= link_to speech_path(speech), class:"unstyle-link" do %>
-              <div class="cards">
-                <div class="text-center">
-                  <%= image_tag "mic.png", class: "image-cards" %>
-                  <h3><%= speech.title %></h3>
-                  <p><%= speech.description %></p>
+        <% unless @user_speech_done.nil? %>
+          <% @user_speech_done.each do |speech| %>
+            <div class="col-xs-12 col-sm-4">
+              <%= link_to speech_path(speech), class:"unstyle-link" do %>
+                <div class="cards">
+                  <div class="text-center">
+                    <%= image_tag "mic.png", class: "image-cards" %>
+                    <h3><%= speech.title %></h3>
+                    <p><%= speech.description %></p>
+                  </div>
                 </div>
-              </div>
-            <% end %>
-          </div>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <div class="tab-content" id="submitted">
@@ -44,21 +50,23 @@
         <% end %>
       </div>
       <div class="tab-content" id="reviews">
-        <% @reviews_received.each do |review| %>
-          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <div class="review">
-              <div class="review-user">
-                <%= cl_image_tag review.user.photo, height: 40, width: 40, radius: :max, crop: :fill, gravity: :face %>
-                <div class="reviewer-info">
-                  <p><strong><%= review.user.first_name %></strong></p>
-                  <p><%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i %> <%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i > 1 ? " days ago" : " day ago" %> on <%= link_to review.speech.title, speech_path(review.speech), class:"speech-name" %> </p>
+        <% unless @reviews_received.nil? %>
+          <% @reviews_received.each do |review| %>
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+              <div class="review">
+                <div class="review-user">
+                  <%= cl_image_tag review.user.photo, height: 40, width: 40, radius: :max, crop: :fill, gravity: :face %>
+                  <div class="reviewer-info">
+                    <p><strong><%= review.user.first_name %></strong></p>
+                    <p><%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i %> <%= (Date.today - Date.parse(review.created_at.strftime("%Y-%m-%e"))).to_i > 1 ? " days ago" : " day ago" %> on <%= link_to review.speech.title, speech_path(review.speech), class:"speech-name" %> </p>
+                  </div>
                 </div>
-              </div>
-              <div class="review-content">
-                <%= review.content %>
-              </div>
-          </div>
-          </div>
+                <div class="review-content">
+                  <%= review.content %>
+                </div>
+            </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <%= link_to new_speech_path , class:"fixedbtn" do  %>
